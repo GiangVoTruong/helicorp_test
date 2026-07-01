@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#141b57" />
+      <stop offset="0.5" stop-color="#192cb6" />
+      <stop offset="1" stop-color="#1f47f5" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#588dff" />
+      <stop offset="1" stop-color="#3366ff" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <circle cx="980" cy="120" r="180" fill="#3366ff" fill-opacity="0.18" />
+  <circle cx="180" cy="520" r="220" fill="#588dff" fill-opacity="0.12" />
+  <rect x="80" y="180" width="1040" height="270" rx="32" fill="white" fill-opacity="0.06" stroke="white" stroke-opacity="0.12" />
+  <text x="120" y="290" fill="white" font-family="Inter, Arial, sans-serif" font-size="72" font-weight="800">TechNexus</text>
+  <text x="120" y="360" fill="#d9e6ff" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="500">Redefining the future of technology</text>
+  <rect x="120" y="400" width="220" height="8" rx="4" fill="url(#accent)" />
+</svg>

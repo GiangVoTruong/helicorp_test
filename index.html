@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechNexus — Định nghĩa lại tương lai công nghệ</title>
+    <meta
+      name="description"
+      content="Trải nghiệm sức mạnh vượt trội với giải pháp TechNexus thế hệ mới — hiệu năng cao, bảo mật tuyệt đối và thiết kế hoàn hảo."
+    />
+    <meta property="og:title" content="TechNexus — Định nghĩa lại tương lai công nghệ" />
+    <meta
+      property="og:description"
+      content="Trải nghiệm sức mạnh vượt trội với giải pháp TechNexus thế hệ mới — hiệu năng cao, bảo mật tuyệt đối và thiết kế hoàn hảo."
+    />
+    <meta property="og:image" content="/og-image.svg" />
+    <meta property="og:url" content="/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="TechNexus" />
+    <meta property="og:locale" content="vi_VN" />
+    <script>
+      ;(function () {
+        var key = 'technexus-theme'
+        var stored = localStorage.getItem(key)
+        var theme =
+          stored === 'light' || stored === 'dark'
+            ? stored
+            : window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light'
+        document.documentElement.classList.toggle('dark', theme === 'dark')
+        document.documentElement.style.colorScheme = theme
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
