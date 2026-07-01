@@ -29,6 +29,7 @@ export default defineConfig(({ mode }) => {
       host: '0.0.0.0',
       port: Number(process.env.PORT) || 4173,
       strictPort: true,
+      allowedHosts: ['helicorp-test.onrender.com'],
       proxy: { '/api/gemini': geminiProxy },
     },
   }
