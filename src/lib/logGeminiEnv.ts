@@ -13,6 +13,11 @@ export async function logGeminiEnvOnLoad(): Promise<void> {
       data.source,
     )
   } catch {
-    console.warn('[env] server GEMINI_API_KEY: unknown (env-check unavailable)')
+    console.warn(
+      '[env] server GEMINI_API_KEY: unknown (env-check unavailable)',
+    )
+    console.warn(
+      '[deploy] Render phải là Web Service (không phải Static Site). Start Command: pnpm start',
+    )
   }
 }

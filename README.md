@@ -86,15 +86,34 @@ Commit message theo [Conventional Commits](https://www.conventionalcommits.org/)
 
 ## Deploy trên Render
 
+> **Quan trọng:** Dùng **Web Service**, không dùng **Static Site**.  
+> Static Site chỉ serve file trong `dist/` → `/api/env-check` và chatbot proxy sẽ **404**.
+
+### Tạo Web Service
+
+1. Render Dashboard → **New +** → **Web Service** (không chọn Static Site)
+2. Connect repo `helicorp_test`
+3. Cấu hình:
+
 | Cài đặt | Giá trị |
 |---------|---------|
+| **Runtime** | Node |
 | **Build Command** | `pnpm install && pnpm build` |
 | **Start Command** | `pnpm start` |
-| **Environment** | `GEMINI_API_KEY` (cho chatbot, tùy chọn) |
+| **Environment** | `GEMINI_API_KEY` = API key Gemini |
 
-> **Không dùng** `pnpm dev` trên Render — dev server chỉ bind `localhost`, Render không detect được port.
+4. **Save** → đợi deploy xong
+5. Mở Console (F12) → thấy `[env] server GEMINI_API_KEY: set`
 
-Hoặc dùng file `render.yaml` có sẵn trong repo (Blueprint).
+### Nếu đang dùng Static Site
+
+Xóa Static Site cũ (hoặc tạo Web Service mới với URL khác), rồi làm theo bước trên.  
+File `render.yaml` trong repo đã cấu hình sẵn cho Web Service.
+
+### Kiểm tra nhanh
+
+- `https://your-app.onrender.com/api/env-check` → phải trả JSON, không phải 404
+- Render Logs → thấy `[server] listening on 0.0.0.0:...`
 
 ## Liên kết
 
