@@ -18,8 +18,20 @@ export default defineConfig(({ mode }) => {
     },
   }
 
+  const logGeminiEnv = {
+    name: 'log-gemini-env',
+    configurePreviewServer() {
+      const fromFile = Boolean(env.VITE_GEMINI_API_KEY?.trim())
+      const fromProcess = Boolean(process.env.VITE_GEMINI_API_KEY?.trim())
+      const hasKey = Boolean(geminiKey?.trim())
+      console.log(
+        `[env] VITE_GEMINI_API_KEY: ${hasKey ? 'set' : 'missing'} (file=${fromFile}, process.env=${fromProcess})`,
+      )
+    },
+  }
+
   return {
-    plugins: [react(), babel({ presets: [reactCompilerPreset()] }), tailwindcss()],
+    plugins: [react(), babel({ presets: [reactCompilerPreset()] }), tailwindcss(), logGeminiEnv],
     server: { proxy: { '/api/gemini': geminiProxy } },
     preview: {
       host: '0.0.0.0',
