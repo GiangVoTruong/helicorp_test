@@ -1,6 +1,6 @@
 import { PRODUCT_IDS } from '../../../data/products'
 import { useLanguage } from '../../../i18n/useLanguage'
-import RevealOnScroll from '../../../components/scrolly/RevealOnScroll'
+import RevealOnScroll from '../../../components/scrolly/primitives/RevealOnScroll'
 import ProductCard from './ProductCard'
 
 export default function ProductCatalogSection() {

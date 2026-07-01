@@ -1,5 +1,6 @@
-import { useScrollProgress } from '../../hooks/useScrollProgress'
+import { useScrollProgress } from '../../../hooks/useScrollProgress'
 
+/** Thanh tiến độ scroll cố định bên trái màn hình. */
 export default function ScrollProgressBar() {
   const progress = useScrollProgress()
 

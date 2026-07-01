@@ -1,69 +1,58 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react'
-import { useLanguage } from '../../i18n/useLanguage'
-import ParallaxLayer from './ParallaxLayer'
+import { useLanguage } from '../../../i18n/useLanguage'
+import { useActiveStep } from '../hooks/useActiveStep'
+import { ParallaxBlob } from '../primitives/Parallax'
 
-type ScrollyStepProps = {
-  index: number
-  setRef: (index: number) => (el: HTMLDivElement | null) => void
-  active: boolean
-  children: ReactNode
-}
+const FEATURE_ICONS = [
+  ({ className }: { className?: string }) => (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path
+        d="M13 2L4 14h6l-1 8 9-12h-6l1-8Z"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  ({ className }: { className?: string }) => (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path
+        d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3Z"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M9.5 12l1.8 1.8L15 10"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  ({ className }: { className?: string }) => (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.8" />
+      <path
+        d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+    </svg>
+  ),
+] as const
 
-function ScrollyStep({ index, setRef, active, children }: ScrollyStepProps) {
-  return (
-    <div
-      ref={setRef(index)}
-      className={`flex min-h-[70vh] items-center py-16 transition-opacity duration-500 lg:min-h-[85vh] ${
-        active ? 'opacity-100' : 'opacity-30'
-      }`}
-    >
-      {children}
-    </div>
-  )
-}
-
-type ScrollyFeaturesProps = {
-  icons: readonly ((props: { className?: string }) => ReactNode)[]
-}
-
-export default function ScrollyFeatures({ icons }: ScrollyFeaturesProps) {
+export default function FeaturesSection() {
   const { t } = useLanguage()
-  const [activeIndex, setActiveIndex] = useState(0)
-  const stepRefs = useRef<(HTMLDivElement | null)[]>([])
-
-  useEffect(() => {
-    const elements = stepRefs.current.filter(Boolean) as HTMLDivElement[]
-    if (!elements.length) return
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
-
-        if (!visible.length) return
-        const index = elements.indexOf(visible[0].target as HTMLDivElement)
-        if (index >= 0) setActiveIndex(index)
-      },
-      { rootMargin: '-35% 0px -35% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] },
-    )
-
-    elements.forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
-  }, [t.features.items.length])
-
-  const setRef = (index: number) => (el: HTMLDivElement | null) => {
-    stepRefs.current[index] = el
-  }
+  const { activeIndex, listRef } = useActiveStep(t.features.items.length)
 
   return (
     <section id="tinh-nang" className="relative px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
-      <ParallaxLayer
+      <ParallaxBlob
         speed={0.08}
-        className="pointer-events-none absolute top-20 -left-32 h-72 w-72 rounded-full bg-brand-400/10 blur-3xl"
-      >
-        <div className="h-full w-full" />
-      </ParallaxLayer>
+        className="absolute top-20 -left-32 h-72 w-72 rounded-full bg-brand-400/10 blur-3xl"
+      />
 
       <div className="relative mx-auto max-w-7xl lg:grid lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
         <div className="lg:sticky lg:top-28 lg:self-start">
@@ -105,15 +94,18 @@ export default function ScrollyFeatures({ icons }: ScrollyFeaturesProps) {
           </ol>
         </div>
 
-        <div>
+        <div ref={listRef}>
           {t.features.items.map((feature, index) => {
-            const Icon = icons[index]
+            const Icon = FEATURE_ICONS[index]
+            const isActive = activeIndex === index
+
             return (
-              <ScrollyStep
+              <div
                 key={feature.title}
-                index={index}
-                setRef={setRef}
-                active={activeIndex === index}
+                data-step={index}
+                className={`flex min-h-[70vh] items-center py-16 transition-opacity duration-500 lg:min-h-[85vh] ${
+                  isActive ? 'opacity-100' : 'opacity-30'
+                }`}
               >
                 <article className="w-full rounded-3xl border border-slate-200 bg-white/80 p-8 shadow-xl shadow-slate-900/5 backdrop-blur-sm sm:p-10 dark:border-slate-800 dark:bg-slate-900/80 dark:shadow-black/20">
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-50 text-brand-600 dark:bg-brand-950 dark:text-brand-400">
@@ -130,7 +122,7 @@ export default function ScrollyFeatures({ icons }: ScrollyFeaturesProps) {
                     {feature.description}
                   </p>
                 </article>
-              </ScrollyStep>
+              </div>
             )
           })}
         </div>

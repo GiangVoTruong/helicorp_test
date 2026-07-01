@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { useInView } from '../../hooks/useInView'
+import { useInView } from '../../../hooks/useInView'
 
 type RevealOnScrollProps = {
   children: ReactNode
@@ -14,6 +14,7 @@ const OFFSET: Record<NonNullable<RevealOnScrollProps['direction']>, string> = {
   right: 'translate-x-8',
 }
 
+/** Fade + slide khi phần tử vào viewport. */
 export default function RevealOnScroll({
   children,
   className = '',

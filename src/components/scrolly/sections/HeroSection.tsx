@@ -1,6 +1,6 @@
-import { useLanguage } from '../../i18n/useLanguage'
-import ParallaxLayer from './ParallaxLayer'
-import RevealOnScroll from './RevealOnScroll'
+import { useLanguage } from '../../../i18n/useLanguage'
+import Parallax, { ParallaxBlob } from '../primitives/Parallax'
+import RevealOnScroll from '../primitives/RevealOnScroll'
 
 const STAT_VALUES = ['99.9%', '<2ms', '150+'] as const
 
@@ -60,7 +60,7 @@ function HeroVisual() {
   )
 }
 
-export default function HeroScrollySection() {
+export default function HeroSection() {
   const { t } = useLanguage()
 
   const stats = [
@@ -71,24 +71,9 @@ export default function HeroScrollySection() {
 
   return (
     <section className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-linear-to-b from-brand-50/70 via-white to-white dark:from-brand-950/40 dark:via-slate-950 dark:to-slate-950">
-      <ParallaxLayer
-        speed={0.25}
-        className="pointer-events-none absolute -top-32 -right-24 h-112 w-md rounded-full bg-brand-400/25 blur-3xl"
-      >
-        <div className="h-full w-full" />
-      </ParallaxLayer>
-      <ParallaxLayer
-        speed={-0.15}
-        className="pointer-events-none absolute -bottom-40 -left-32 h-96 w-96 rounded-full bg-brand-600/15 blur-3xl"
-      >
-        <div className="h-full w-full" />
-      </ParallaxLayer>
-      <ParallaxLayer
-        speed={0.1}
-        className="pointer-events-none absolute top-1/3 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-brand-300/10 blur-3xl"
-      >
-        <div className="h-full w-full" />
-      </ParallaxLayer>
+      <ParallaxBlob speed={0.25} className="absolute -top-32 -right-24 h-112 w-md rounded-full bg-brand-400/25 blur-3xl" />
+      <ParallaxBlob speed={-0.15} className="absolute -bottom-40 -left-32 h-96 w-96 rounded-full bg-brand-600/15 blur-3xl" />
+      <ParallaxBlob speed={0.1} className="absolute top-1/3 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-brand-300/10 blur-3xl" />
 
       <div className="relative mx-auto grid w-full max-w-7xl flex-1 items-center gap-14 px-4 py-24 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-10 lg:px-8 lg:py-32">
         <RevealOnScroll>
@@ -155,9 +140,9 @@ export default function HeroScrollySection() {
         </RevealOnScroll>
 
         <RevealOnScroll delay={150} direction="right">
-          <ParallaxLayer speed={-0.12}>
+          <Parallax speed={-0.12}>
             <HeroVisual />
-          </ParallaxLayer>
+          </Parallax>
         </RevealOnScroll>
       </div>
 

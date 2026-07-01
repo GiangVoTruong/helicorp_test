@@ -84,7 +84,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
 
   const showToast = useCallback((message: string, type: ToastType = 'success') => {
     const id = Date.now() + Math.random()
-    setToasts((prev) => [...prev, { id, message, type }])
+    setToasts([{ id, message, type }])
   }, [])
 
   const removeToast = useCallback((id: number) => {
@@ -96,7 +96,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
       {children}
       <div
         aria-label="Thông báo"
-        className="pointer-events-none fixed top-4 right-4 z-50 flex w-[calc(100%-2rem)] flex-col gap-3 sm:w-auto"
+        className="pointer-events-none fixed top-4 right-4 z-50 w-[calc(100%-2rem)] sm:w-auto"
       >
         {toasts.map((toast) => (
           <ToastItem key={toast.id} toast={toast} onClose={() => removeToast(toast.id)} />

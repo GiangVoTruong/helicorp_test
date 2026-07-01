@@ -1,10 +1,10 @@
-import { useLanguage } from '../../i18n/useLanguage'
-import ParallaxLayer from './ParallaxLayer'
-import RevealOnScroll from './RevealOnScroll'
+import { useLanguage } from '../../../i18n/useLanguage'
+import { ParallaxBlob } from '../primitives/Parallax'
+import RevealOnScroll from '../primitives/RevealOnScroll'
 
 const SPEC_KEYS = ['chipset', 'ram', 'storage', 'battery', 'os', 'material'] as const
 
-export default function SpecsScrollySection() {
+export default function SpecsSection() {
   const { t } = useLanguage()
 
   const specs = SPEC_KEYS.map((key) => ({
@@ -18,18 +18,14 @@ export default function SpecsScrollySection() {
       id="thong-so"
       className="relative overflow-hidden bg-slate-50 px-4 py-20 sm:px-6 lg:px-8 lg:py-28 dark:bg-slate-900/50"
     >
-      <ParallaxLayer
+      <ParallaxBlob
         speed={0.12}
-        className="pointer-events-none absolute -top-20 right-0 h-80 w-80 rounded-full bg-brand-500/10 blur-3xl"
-      >
-        <div className="h-full w-full" />
-      </ParallaxLayer>
-      <ParallaxLayer
+        className="absolute -top-20 right-0 h-80 w-80 rounded-full bg-brand-500/10 blur-3xl"
+      />
+      <ParallaxBlob
         speed={-0.08}
-        className="pointer-events-none absolute bottom-0 -left-24 h-72 w-72 rounded-full bg-brand-400/10 blur-3xl"
-      >
-        <div className="h-full w-full" />
-      </ParallaxLayer>
+        className="absolute bottom-0 -left-24 h-72 w-72 rounded-full bg-brand-400/10 blur-3xl"
+      />
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <RevealOnScroll direction="left">

@@ -1,9 +1,9 @@
 import { useState, type SubmitEvent } from 'react'
-import { useToast } from '../ui/useToast'
-import { useLanguage } from '../../i18n/useLanguage'
-import { validateNewsletterEmail } from '../../lib/validation'
-import ParallaxLayer from './ParallaxLayer'
-import RevealOnScroll from './RevealOnScroll'
+import { useToast } from '../../ui/useToast'
+import { useLanguage } from '../../../i18n/useLanguage'
+import { validateNewsletterEmail } from '../../../lib/validation'
+import { ParallaxBlob } from '../primitives/Parallax'
+import RevealOnScroll from '../primitives/RevealOnScroll'
 
 function NewsletterForm() {
   const [email, setEmail] = useState('')
@@ -108,7 +108,7 @@ function NewsletterForm() {
   )
 }
 
-export default function NewsletterScrollySection() {
+export default function NewsletterSection() {
   const { t } = useLanguage()
 
   return (
@@ -119,18 +119,14 @@ export default function NewsletterScrollySection() {
       <RevealOnScroll>
         <div className="relative mx-auto max-w-7xl overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl shadow-slate-900/5 lg:grid lg:grid-cols-2 dark:border-slate-800 dark:bg-slate-900 dark:shadow-black/20">
           <div className="relative overflow-hidden bg-linear-to-br from-slate-950 via-brand-950 to-brand-900 px-8 py-12 sm:px-12 sm:py-14 lg:py-16">
-            <ParallaxLayer
+            <ParallaxBlob
               speed={0.15}
-              className="pointer-events-none absolute -top-16 -right-16 h-56 w-56 rounded-full bg-brand-500/25 blur-3xl"
-            >
-              <div className="h-full w-full" />
-            </ParallaxLayer>
-            <ParallaxLayer
+              className="absolute -top-16 -right-16 h-56 w-56 rounded-full bg-brand-500/25 blur-3xl"
+            />
+            <ParallaxBlob
               speed={-0.1}
-              className="pointer-events-none absolute -bottom-20 -left-10 h-48 w-48 rounded-full bg-brand-400/15 blur-3xl"
-            >
-              <div className="h-full w-full" />
-            </ParallaxLayer>
+              className="absolute -bottom-20 -left-10 h-48 w-48 rounded-full bg-brand-400/15 blur-3xl"
+            />
 
             <div className="relative">
               <p className="text-sm font-semibold uppercase tracking-wider text-brand-300">

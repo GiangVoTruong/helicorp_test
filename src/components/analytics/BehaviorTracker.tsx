@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { useLanguage } from '../../i18n/useLanguage'
 import { useToast } from '../ui/useToast'
 
-const SCROLL_MILESTONES = [50] as const
+const SCROLL_MILESTONES = [50, 100] as const
 
 type ScrollMilestone = (typeof SCROLL_MILESTONES)[number]
 
@@ -22,6 +22,7 @@ export default function BehaviorTracker() {
 
     const messages: Record<ScrollMilestone, string> = {
       50: t.analytics.scroll50,
+      100: t.analytics.scroll100,
     }
 
     let ticking = false
