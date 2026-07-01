@@ -5,7 +5,7 @@ import { defineConfig, loadEnv } from 'vite'
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
-  const geminiKey = env.VITE_GEMINI_API_KEY
+  const geminiKey = env.VITE_GEMINI_API_KEY ?? process.env.VITE_GEMINI_API_KEY
 
   const geminiProxy = {
     target: 'https://generativelanguage.googleapis.com',
@@ -21,6 +21,11 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react(), babel({ presets: [reactCompilerPreset()] }), tailwindcss()],
     server: { proxy: { '/api/gemini': geminiProxy } },
-    preview: { proxy: { '/api/gemini': geminiProxy } },
+    preview: {
+      host: '0.0.0.0',
+      port: Number(process.env.PORT) || 4173,
+      strictPort: true,
+      proxy: { '/api/gemini': geminiProxy },
+    },
   }
 })

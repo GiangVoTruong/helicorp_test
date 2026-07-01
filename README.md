@@ -84,6 +84,18 @@ src/
 
 Commit message theo [Conventional Commits](https://www.conventionalcommits.org/): `feat(scope): mô tả ngắn`.
 
+## Deploy trên Render
+
+| Cài đặt | Giá trị |
+|---------|---------|
+| **Build Command** | `pnpm install && pnpm build` |
+| **Start Command** | `pnpm start` |
+| **Environment** | `VITE_GEMINI_API_KEY` (cho chatbot, tùy chọn) |
+
+> **Không dùng** `pnpm dev` trên Render — dev server chỉ bind `localhost`, Render không detect được port.
+
+Hoặc dùng file `render.yaml` có sẵn trong repo (Blueprint).
+
 ## Liên kết
 
 Sau khi tạo repo GitHub mới:

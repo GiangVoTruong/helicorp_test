@@ -4,9 +4,7 @@ import { PRODUCT_CATALOG, PRODUCT_IDS, type ProductId } from '../../data/product
 type Products = Record<ProductId, { name: string; description: string; category: string }>
 
 const MODEL = 'gemini-2.5-flash'
-const GEMINI_BASE = import.meta.env.DEV
-  ? '/api/gemini/v1beta/models'
-  : 'https://generativelanguage.googleapis.com/v1beta/models'
+const GEMINI_BASE = '/api/gemini/v1beta/models'
 
 const SYSTEM_PROMPT: Record<Locale, string> = {
   vi: 'Bạn là trợ lý bán hàng TechNexus. Trả lời ngắn gọn, thân thiện bằng tiếng Việt. Tư vấn sản phẩm, giá, giỏ hàng và yêu thích.',
@@ -75,11 +73,7 @@ function getErrorReply(locale: Locale): string {
 }
 
 function getGeminiUrl(): string {
-  const apiKey = import.meta.env.VITE_GEMINI_API_KEY?.trim()
-  const path = `${GEMINI_BASE}/${MODEL}:generateContent`
-  if (import.meta.env.DEV) return path
-  if (!apiKey) throw new Error('missing_key')
-  return `${path}?key=${encodeURIComponent(apiKey)}`
+  return `${GEMINI_BASE}/${MODEL}:generateContent`
 }
 
 async function callGemini(userMessage: string, system: string): Promise<string> {
