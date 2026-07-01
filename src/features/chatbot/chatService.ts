@@ -68,8 +68,8 @@ function getAutoReply(message: string, locale: Locale, products: Products): stri
 
 function getErrorReply(locale: Locale): string {
   return locale === 'vi'
-    ? 'Không kết nối được Gemini. Kiểm tra VITE_GEMINI_API_KEY trong .env và restart npm run dev.'
-    : 'Unable to reach Gemini. Check VITE_GEMINI_API_KEY in .env and restart npm run dev.'
+    ? 'Không kết nối được Gemini. Kiểm tra GEMINI_API_KEY trong .env và restart server.'
+    : 'Unable to reach Gemini. Check GEMINI_API_KEY in .env and restart the server.'
 }
 
 function getGeminiUrl(): string {

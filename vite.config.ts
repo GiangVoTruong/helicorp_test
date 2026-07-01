@@ -6,7 +6,11 @@ import { defineConfig, loadEnv } from 'vite'
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
-  const geminiKey = env.VITE_GEMINI_API_KEY ?? process.env.VITE_GEMINI_API_KEY
+  const geminiKey =
+    env.GEMINI_API_KEY ??
+    process.env.GEMINI_API_KEY ??
+    env.VITE_GEMINI_API_KEY ??
+    process.env.VITE_GEMINI_API_KEY
 
   const geminiProxy = {
     target: 'https://generativelanguage.googleapis.com',
@@ -22,8 +26,12 @@ export default defineConfig(({ mode }) => {
   const envCheckMiddleware: Connect.NextHandleFunction = (req, res, next) => {
     if (req.url !== '/api/env-check') return next()
 
-    const fromFile = Boolean(env.VITE_GEMINI_API_KEY?.trim())
-    const fromProcess = Boolean(process.env.VITE_GEMINI_API_KEY?.trim())
+    const fromFile = Boolean(
+      (env.GEMINI_API_KEY ?? env.VITE_GEMINI_API_KEY)?.trim(),
+    )
+    const fromProcess = Boolean(
+      (process.env.GEMINI_API_KEY ?? process.env.VITE_GEMINI_API_KEY)?.trim(),
+    )
     const hasKey = Boolean(geminiKey?.trim())
 
     res.setHeader('Content-Type', 'application/json')

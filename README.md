@@ -51,7 +51,7 @@ pnpm lint
 
 | Biến | Mô tả |
 |------|-------|
-| `VITE_GEMINI_API_KEY` | API key Google Gemini cho chatbot (tùy chọn — có fallback offline) |
+| `GEMINI_API_KEY` | API key Google Gemini cho chatbot (server-side, không lộ ra client) |
 
 ## Cấu trúc thư mục
 
@@ -90,7 +90,7 @@ Commit message theo [Conventional Commits](https://www.conventionalcommits.org/)
 |---------|---------|
 | **Build Command** | `pnpm install && pnpm build` |
 | **Start Command** | `pnpm start` |
-| **Environment** | `VITE_GEMINI_API_KEY` (cho chatbot, tùy chọn) |
+| **Environment** | `GEMINI_API_KEY` (cho chatbot, tùy chọn) |
 
 > **Không dùng** `pnpm dev` trên Render — dev server chỉ bind `localhost`, Render không detect được port.
 
