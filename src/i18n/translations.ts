@@ -1,0 +1,430 @@
+export type Locale = 'vi' | 'en'
+
+export const DEFAULT_LOCALE: Locale = 'vi'
+export const LOCALE_STORAGE_KEY = 'technexus-locale'
+
+export const translations = {
+  vi: {
+    meta: {
+      title: 'TechNexus — Định nghĩa lại tương lai công nghệ',
+      description:
+        'Trải nghiệm sức mạnh vượt trội với giải pháp TechNexus thế hệ mới — hiệu năng cao, bảo mật tuyệt đối và thiết kế hoàn hảo.',
+      ogType: 'website',
+      ogSiteName: 'TechNexus',
+    },
+    nav: {
+      features: 'Tính năng',
+      specs: 'Thông số',
+      products: 'Sản phẩm',
+      contact: 'Liên hệ',
+      register: 'Đăng ký ngay',
+      mainNav: 'Điều hướng chính',
+      mobileNav: 'Điều hướng di động',
+      openMenu: 'Mở menu',
+      closeMenu: 'Đóng menu',
+    },
+    lang: {
+      switchLabel: 'Chọn ngôn ngữ',
+      vi: 'Tiếng Việt',
+      en: 'English',
+    },
+    theme: {
+      switchToLight: 'Chuyển sang chế độ sáng',
+      switchToDark: 'Chuyển sang chế độ tối',
+    },
+    story: {
+      scrollHint: 'Cuộn để khám phá câu chuyện',
+      chapter1: 'Chương 01 — Khởi đầu',
+      chapter2: 'Chương 02 — Sức mạnh',
+      chapter3: 'Chương 03 — Kiến trúc',
+      chapter4: 'Chương 04 — Kết nối',
+    },
+    hero: {
+      badge: 'Thế hệ mới nhất 2026',
+      titleBefore: 'Định nghĩa lại',
+      titleHighlight: 'tương lai',
+      titleAfter: 'công nghệ',
+      description:
+        'Trải nghiệm sức mạnh vượt trội với giải pháp TechNexus thế hệ mới — nơi hiệu năng, bảo mật và thiết kế hội tụ trong từng chi tiết hoàn hảo.',
+      ctaPrimary: 'Bắt đầu ngay',
+      ctaSecondary: 'Xem tính năng',
+      systemPerformance: 'Hiệu suất hệ thống',
+      optimized: 'Tối ưu',
+      stats: {
+        uptime: 'Thời gian hoạt động',
+        latency: 'Độ trễ phản hồi',
+        countries: 'Quốc gia phủ sóng',
+      },
+    },
+    features: {
+      eyebrow: 'Tính năng',
+      title: 'Tính năng nổi bật',
+      description:
+        'Được thiết kế để đáp ứng những tiêu chuẩn khắt khe nhất của ngành công nghiệp hiện đại.',
+      items: [
+        {
+          title: 'Hiệu năng cực đỉnh',
+          description:
+            'Xử lý dữ liệu tốc độ cao với kiến trúc vi mô mới nhất, giảm thiểu độ trễ xuống mức tối đa.',
+        },
+        {
+          title: 'Bảo mật tuyệt đối',
+          description:
+            'Mã hóa đầu cuối kết hợp AI phát hiện mối đe dọa theo thời gian thực, bảo vệ dữ liệu 24/7.',
+        },
+        {
+          title: 'Kết nối không giới hạn',
+          description:
+            'Tương thích hoàn hảo với hệ sinh thái IoT và các giao thức mạng đa dạng trên toàn cầu.',
+        },
+      ],
+    },
+    specs: {
+      eyebrow: 'Phần cứng',
+      title: 'Thông số kỹ thuật',
+      description:
+        'Chi tiết về kiến trúc phần cứng tạo nên sức mạnh của TechNexus. Thiết kế nguyên khối, tối ưu hóa tản nhiệt cho hiệu năng bền bỉ.',
+      certified: 'Đạt chứng nhận quốc tế',
+      certifications: 'ISO 27001 · CE · RoHS',
+      labels: {
+        chipset: 'Chipset',
+        ram: 'RAM',
+        storage: 'Lưu trữ',
+        battery: 'Pin',
+        os: 'Hệ điều hành',
+        material: 'Vật liệu',
+      },
+      values: {
+        chipset: 'Nexus X1 Quantum',
+        ram: '32GB LPDDR5X',
+        storage: '2TB NVMe PCIe 5.0',
+        battery: '99.9Wh · sạc 240W',
+        os: 'NexusOS Pro',
+        material: 'Hợp kim Nhôm–Magie',
+      },
+    },
+    newsletter: {
+      badge: 'Newsletter',
+      title: 'Nhận tin tức mới nhất',
+      description: 'Đăng ký để cập nhật sản phẩm, tính năng mới và ưu đãi độc quyền từ TechNexus.',
+      benefits: [
+        'Thông báo ra mắt sản phẩm và tính năng mới',
+        'Ưu đãi độc quyền dành cho người đăng ký',
+        'Không spam — hủy đăng ký bất cứ lúc nào',
+      ],
+      subscribers: 'người đã đăng ký',
+      formEyebrow: 'Đăng ký nhận tin',
+      formTitle: 'Tham gia cộng đồng TechNexus',
+      formDescription: 'Nhập email để nhận bản tin hàng tuần với tin công nghệ và ưu đãi mới nhất.',
+      emailLabel: 'Địa chỉ email',
+      emailAria: 'Email đăng ký nhận tin',
+      emailPlaceholder: 'ban@email.com',
+      submit: 'Đăng ký ngay',
+      privacyHint:
+        'Bằng việc đăng ký, bạn đồng ý nhận email từ TechNexus. Chúng tôi tôn trọng quyền riêng tư của bạn.',
+      emailError: 'Vui lòng nhập một địa chỉ email hợp lệ.',
+      successToast: 'Cảm ơn bạn! Đăng ký nhận tin thành công.',
+    },
+    analytics: {
+      scroll25: 'Bạn đã cuộn 25% trang',
+      scroll50: 'Bạn đã cuộn 50% trang',
+      scroll75: 'Bạn đã cuộn 75% trang',
+      scroll100: 'Bạn đã xem hết trang',
+      clickTracked: 'Đã ghi nhận tương tác: {label}',
+    },
+    commerce: {
+      addToCart: 'Thêm vào giỏ',
+      addedToCart: 'Đã thêm {name} vào giỏ hàng',
+      addedToFavorites: 'Đã lưu {name} vào yêu thích',
+      removedFromFavorites: 'Đã bỏ {name} khỏi yêu thích',
+      favorite: 'Thêm yêu thích',
+      unfavorite: 'Bỏ yêu thích',
+      increaseQty: 'Tăng số lượng',
+      decreaseQty: 'Giảm số lượng',
+      removeItem: 'Xóa sản phẩm',
+      closePanel: 'Đóng panel',
+      catalog: {
+        eyebrow: 'Cửa hàng',
+        title: 'Sản phẩm TechNexus',
+        description:
+          'Khám phá dòng thiết bị cao cấp — thêm vào giỏ, lưu yêu thích và xem lại sản phẩm đã xem mọi lúc.',
+      },
+      badges: {
+        new: 'Mới',
+        bestseller: 'Bán chạy',
+      },
+      cart: {
+        title: 'Giỏ hàng',
+        empty: 'Giỏ hàng trống. Hãy thêm sản phẩm từ danh mục.',
+        total: 'Tạm tính',
+        checkout: 'Thanh toán',
+      },
+      favorites: {
+        title: 'Yêu thích',
+        empty: 'Chưa có sản phẩm yêu thích.',
+      },
+      recent: {
+        title: 'Đã xem',
+        empty: 'Chưa xem sản phẩm nào.',
+      },
+      products: {
+        'nexus-x1-pro': {
+          name: 'Nexus X1 Pro',
+          category: 'Laptop',
+          badge: 'bestseller' as const,
+          description: 'Hiệu năng đỉnh cao cho chuyên gia — chip Quantum, 32GB RAM, màn hình 4K.',
+        },
+        'nexus-x1-quantum': {
+          name: 'Nexus X1 Quantum',
+          category: 'Laptop',
+          badge: 'new' as const,
+          description: 'Thế hệ Quantum mới — AI onboard, pin 99.9Wh, thiết kế magie siêu nhẹ.',
+        },
+        'nexus-hub-iot': {
+          name: 'Nexus Hub IoT',
+          category: 'Smart Home',
+          description: 'Trung tâm điều khiển IoT — kết nối 150+ thiết bị, bảo mật end-to-end.',
+        },
+        'nexus-watch-ultra': {
+          name: 'Nexus Watch Ultra',
+          category: 'Wearable',
+          badge: 'bestseller' as const,
+          description: 'Đồng hồ thông minh cao cấp — theo dõi sức khỏe, eSIM, pin 14 ngày.',
+        },
+      },
+    },
+    chatbot: {
+      open: 'Mở chatbot tư vấn',
+      close: 'Đóng chatbot',
+      title: 'TechNexus Assistant',
+      subtitle: 'Tư vấn sản phẩm 24/7',
+      welcome:
+        'Xin chào! Tôi có thể tư vấn giá, tính năng sản phẩm, giỏ hàng hoặc danh sách yêu thích. Bạn cần gì?',
+      placeholder: 'Hỏi về sản phẩm, giá cả...',
+      send: 'Gửi tin nhắn',
+      typing: 'Đang trả lời...',
+    },
+    footer: {
+      tagline:
+        'Định nghĩa lại tương lai công nghệ với những giải pháp hiệu năng cao, an toàn và bền vững.',
+      privacy: 'Chính sách bảo mật',
+      terms: 'Điều khoản dịch vụ',
+      contact: 'Liên hệ',
+      navLabel: 'Điều hướng chân trang',
+      copyright: '© 2026 TechNexus. All rights reserved.',
+    },
+  },
+  en: {
+    meta: {
+      title: 'TechNexus — Redefining the Future of Technology',
+      description:
+        'Experience next-generation power with TechNexus — high performance, absolute security, and flawless design in every detail.',
+      ogType: 'website',
+      ogSiteName: 'TechNexus',
+    },
+    nav: {
+      features: 'Features',
+      specs: 'Specs',
+      products: 'Products',
+      contact: 'Contact',
+      register: 'Subscribe now',
+      mainNav: 'Main navigation',
+      mobileNav: 'Mobile navigation',
+      openMenu: 'Open menu',
+      closeMenu: 'Close menu',
+    },
+    lang: {
+      switchLabel: 'Select language',
+      vi: 'Tiếng Việt',
+      en: 'English',
+    },
+    theme: {
+      switchToLight: 'Switch to light mode',
+      switchToDark: 'Switch to dark mode',
+    },
+    story: {
+      scrollHint: 'Scroll to explore the story',
+      chapter1: 'Chapter 01 — The Beginning',
+      chapter2: 'Chapter 02 — Power',
+      chapter3: 'Chapter 03 — Architecture',
+      chapter4: 'Chapter 04 — Connect',
+    },
+    hero: {
+      badge: 'Latest generation 2026',
+      titleBefore: 'Redefining the',
+      titleHighlight: 'future',
+      titleAfter: 'of technology',
+      description:
+        'Experience next-level power with the new TechNexus platform — where performance, security, and design converge in every perfect detail.',
+      ctaPrimary: 'Get started',
+      ctaSecondary: 'View features',
+      systemPerformance: 'System performance',
+      optimized: 'Optimized',
+      stats: {
+        uptime: 'Uptime',
+        latency: 'Response latency',
+        countries: 'Countries covered',
+      },
+    },
+    features: {
+      eyebrow: 'Features',
+      title: 'Key highlights',
+      description: 'Built to meet the most demanding standards of the modern technology industry.',
+      items: [
+        {
+          title: 'Peak performance',
+          description:
+            'High-speed data processing with the latest microservice architecture, minimizing latency to the absolute minimum.',
+        },
+        {
+          title: 'Absolute security',
+          description:
+            'End-to-end encryption combined with real-time AI threat detection, protecting your data 24/7.',
+        },
+        {
+          title: 'Limitless connectivity',
+          description:
+            'Fully compatible with the IoT ecosystem and diverse networking protocols worldwide.',
+        },
+      ],
+    },
+    specs: {
+      eyebrow: 'Hardware',
+      title: 'Technical specifications',
+      description:
+        'Details on the hardware architecture behind TechNexus power. Unibody design with optimized thermal performance for sustained efficiency.',
+      certified: 'Internationally certified',
+      certifications: 'ISO 27001 · CE · RoHS',
+      labels: {
+        chipset: 'Chipset',
+        ram: 'RAM',
+        storage: 'Storage',
+        battery: 'Battery',
+        os: 'Operating system',
+        material: 'Material',
+      },
+      values: {
+        chipset: 'Nexus X1 Quantum',
+        ram: '32GB LPDDR5X',
+        storage: '2TB NVMe PCIe 5.0',
+        battery: '99.9Wh · 240W charging',
+        os: 'NexusOS Pro',
+        material: 'Aluminum–Magnesium alloy',
+      },
+    },
+    newsletter: {
+      badge: 'Newsletter',
+      title: 'Get the latest news',
+      description:
+        'Subscribe for product updates, new features, and exclusive offers from TechNexus.',
+      benefits: [
+        'Alerts for new product and feature launches',
+        'Exclusive offers for subscribers',
+        'No spam — unsubscribe anytime',
+      ],
+      subscribers: 'subscribers',
+      formEyebrow: 'Newsletter signup',
+      formTitle: 'Join the TechNexus community',
+      formDescription:
+        'Enter your email to receive a weekly digest of tech news and the latest offers.',
+      emailLabel: 'Email address',
+      emailAria: 'Newsletter signup email',
+      emailPlaceholder: 'you@email.com',
+      submit: 'Subscribe now',
+      privacyHint:
+        'By subscribing, you agree to receive emails from TechNexus. We respect your privacy.',
+      emailError: 'Please enter a valid email address.',
+      successToast: 'Thank you! You have successfully subscribed.',
+    },
+    analytics: {
+      scroll25: 'You scrolled 25% of the page',
+      scroll50: 'You scrolled 50% of the page',
+      scroll75: 'You scrolled 75% of the page',
+      scroll100: 'You reached the bottom of the page',
+      clickTracked: 'Interaction recorded: {label}',
+    },
+    commerce: {
+      addToCart: 'Add to cart',
+      addedToCart: '{name} added to cart',
+      addedToFavorites: '{name} saved to favorites',
+      removedFromFavorites: '{name} removed from favorites',
+      favorite: 'Add to favorites',
+      unfavorite: 'Remove from favorites',
+      increaseQty: 'Increase quantity',
+      decreaseQty: 'Decrease quantity',
+      removeItem: 'Remove item',
+      closePanel: 'Close panel',
+      catalog: {
+        eyebrow: 'Store',
+        title: 'TechNexus Products',
+        description:
+          'Explore our premium lineup — add to cart, save favorites, and revisit recently viewed items anytime.',
+      },
+      badges: {
+        new: 'New',
+        bestseller: 'Best seller',
+      },
+      cart: {
+        title: 'Cart',
+        empty: 'Your cart is empty. Browse products to get started.',
+        total: 'Subtotal',
+        checkout: 'Checkout',
+      },
+      favorites: {
+        title: 'Favorites',
+        empty: 'No favorite products yet.',
+      },
+      recent: {
+        title: 'Recently viewed',
+        empty: 'No recently viewed products.',
+      },
+      products: {
+        'nexus-x1-pro': {
+          name: 'Nexus X1 Pro',
+          category: 'Laptop',
+          badge: 'bestseller' as const,
+          description: 'Peak performance for pros — Quantum chip, 32GB RAM, 4K display.',
+        },
+        'nexus-x1-quantum': {
+          name: 'Nexus X1 Quantum',
+          category: 'Laptop',
+          badge: 'new' as const,
+          description: 'Next-gen Quantum — onboard AI, 99.9Wh battery, ultra-light magnesium.',
+        },
+        'nexus-hub-iot': {
+          name: 'Nexus Hub IoT',
+          category: 'Smart Home',
+          description: 'IoT command center — 150+ devices, end-to-end security.',
+        },
+        'nexus-watch-ultra': {
+          name: 'Nexus Watch Ultra',
+          category: 'Wearable',
+          badge: 'bestseller' as const,
+          description: 'Premium smartwatch — health tracking, eSIM, 14-day battery.',
+        },
+      },
+    },
+    chatbot: {
+      open: 'Open chat assistant',
+      close: 'Close chat assistant',
+      title: 'TechNexus Assistant',
+      subtitle: 'Product advice 24/7',
+      welcome:
+        'Hi! I can help with pricing, product specs, your cart, or favorites. What do you need?',
+      placeholder: 'Ask about products, pricing...',
+      send: 'Send message',
+      typing: 'Typing...',
+    },
+    footer: {
+      tagline:
+        'Redefining the future of technology with high-performance, secure, and sustainable solutions.',
+      privacy: 'Privacy policy',
+      terms: 'Terms of service',
+      contact: 'Contact',
+      navLabel: 'Footer navigation',
+      copyright: '© 2026 TechNexus. All rights reserved.',
+    },
+  },
+} as const
+
+export type Translations = (typeof translations)[Locale]
