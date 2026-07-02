@@ -1,8 +1,28 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import LanguageSwitcher from '../../components/ui/LanguageSwitcher'
 import ThemeToggle from '../../components/ui/ThemeToggle'
-import CommerceHeaderActions from '../commerce/components/CommerceHeaderActions'
 import { useLanguage } from '../../i18n/useLanguage'
+import { useAuth } from '../auth/useAuth'
+import CommerceHeaderActions from '../commerce/components/CommerceHeaderActions'
+
+function getInitials(username: string) {
+  return username.slice(0, 2).toUpperCase()
+}
+
+function UserAvatar({ username, label }: { username: string; label: string }) {
+  return (
+    <Link
+      to="/profile"
+      data-track="nav-profile"
+      aria-label={label}
+      title={label}
+      className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br from-brand-500 to-brand-700 text-sm font-bold text-white shadow-md shadow-brand-600/25 ring-2 ring-white transition-transform hover:scale-105 dark:ring-slate-950"
+    >
+      {getInitials(username)}
+    </Link>
+  )
+}
 
 function Logo() {
   return (
@@ -29,6 +49,7 @@ function Logo() {
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const { t } = useLanguage()
+  const { isAuthenticated, username } = useAuth()
 
   const navItems = [
     { label: t.nav.features, href: '#tinh-nang', track: 'nav-features' },
@@ -63,13 +84,28 @@ export default function Header() {
           <ThemeToggle />
           <LanguageSwitcher />
 
-          <a
-            href="#lien-he"
-            data-track="nav-register"
-            className="hidden rounded-xl bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition-all hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-xl hover:shadow-brand-600/30 sm:inline-flex"
-          >
-            {t.nav.register}
-          </a>
+          <div className="hidden items-center gap-1 sm:flex">
+            {isAuthenticated && username ? (
+              <UserAvatar username={username} label={t.nav.viewProfile} />
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  data-track="nav-login"
+                  className="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100"
+                >
+                  {t.nav.login}
+                </Link>
+                <Link
+                  to="/register"
+                  data-track="nav-register"
+                  className="inline-flex rounded-xl bg-brand-600 px-4 py-2 text-sm font-semibold text-white shadow-sm shadow-brand-600/20 transition-colors hover:bg-brand-700"
+                >
+                  {t.nav.register}
+                </Link>
+              </>
+            )}
+          </div>
 
           <button
             type="button"
@@ -127,15 +163,46 @@ export default function Header() {
                 </a>
               </li>
             ))}
-            <li className="pt-1">
-              <a
-                href="#lien-he"
-                data-track="nav-register-mobile"
-                onClick={() => setMobileOpen(false)}
-                className="block rounded-xl bg-brand-600 px-3 py-3 text-center text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition-colors hover:bg-brand-700"
-              >
-                {t.nav.register}
-              </a>
+            <li className="mt-2 border-t border-slate-200 pt-3 dark:border-slate-800">
+              {isAuthenticated && username ? (
+                <Link
+                  to="/profile"
+                  data-track="nav-profile-mobile"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center gap-3 rounded-xl px-3 py-3 transition-colors hover:bg-slate-100 dark:hover:bg-slate-800"
+                >
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br from-brand-500 to-brand-700 text-sm font-bold text-white shadow-md shadow-brand-600/25">
+                    {getInitials(username)}
+                  </span>
+                  <div>
+                    <p className="text-sm font-semibold text-slate-900 dark:text-slate-100">
+                      @{username}
+                    </p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                      {t.nav.viewProfile}
+                    </p>
+                  </div>
+                </Link>
+              ) : (
+                <div className="flex flex-col gap-1">
+                  <Link
+                    to="/login"
+                    data-track="nav-login-mobile"
+                    onClick={() => setMobileOpen(false)}
+                    className="block rounded-lg px-3 py-3 text-center text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100"
+                  >
+                    {t.nav.login}
+                  </Link>
+                  <Link
+                    to="/register"
+                    data-track="nav-register-mobile"
+                    onClick={() => setMobileOpen(false)}
+                    className="block rounded-xl bg-brand-600 px-3 py-3 text-center text-sm font-semibold text-white shadow-sm shadow-brand-600/20 transition-colors hover:bg-brand-700"
+                  >
+                    {t.nav.register}
+                  </Link>
+                </div>
+              )}
             </li>
           </ul>
         </nav>
