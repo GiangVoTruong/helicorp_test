@@ -7,3 +7,5 @@ services:
     envVars:
       - key: GEMINI_API_KEY
         sync: false
+      - key: VITE_API_PROXY_TARGET
+        value: https://java-x07o.onrender.com
