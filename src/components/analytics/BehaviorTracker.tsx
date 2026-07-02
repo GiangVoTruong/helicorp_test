@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { useLocation } from 'react-router-dom'
 import { useLanguage } from '../../i18n/useLanguage'
 import { useToast } from '../ui/useToast'
 
@@ -13,12 +14,16 @@ function getScrollPercent(): number {
 }
 
 export default function BehaviorTracker() {
+  const location = useLocation()
+  const isHome = location.pathname === '/'
   const { locale, t } = useLanguage()
   const { showToast } = useToast()
   const reachedMilestones = useRef(new Set<ScrollMilestone>())
 
   useEffect(() => {
     reachedMilestones.current.clear()
+
+    if (!isHome) return
 
     const messages: Record<ScrollMilestone, string> = {
       50: t.analytics.scroll50,
@@ -45,20 +50,7 @@ export default function BehaviorTracker() {
 
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
-  }, [locale, showToast, t])
-
-  useEffect(() => {
-    const onClick = (event: MouseEvent) => {
-      const target = (event.target as Element | null)?.closest<HTMLElement>('[data-track]')
-      if (!target || target.dataset.trackToast === 'false') return
-
-      const label = target.dataset.track ?? 'unknown'
-      showToast(t.analytics.clickTracked.replace('{label}', label), 'info')
-    }
-
-    document.addEventListener('click', onClick)
-    return () => document.removeEventListener('click', onClick)
-  }, [showToast, t])
+  }, [isHome, locale, showToast, t])
 
   return null
 }

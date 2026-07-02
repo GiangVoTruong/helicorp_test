@@ -25,17 +25,13 @@ export default function ProductCard({ productId }: ProductCardProps) {
   function handleAddToCart() {
     trackView(productId)
     addToCart(productId)
-    showToast(t.commerce.addedToCart.replace('{name}', product.name))
+    const trackLabel = `add-cart-${productId}`
+    showToast(t.analytics.clickTracked.replace('{label}', trackLabel), 'info')
   }
 
   function handleToggleFavorite() {
     trackView(productId)
     toggleFavorite(productId)
-    showToast(
-      favorited
-        ? t.commerce.removedFromFavorites.replace('{name}', product.name)
-        : t.commerce.addedToFavorites.replace('{name}', product.name),
-    )
   }
 
   return (
