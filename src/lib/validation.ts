@@ -30,3 +30,19 @@ export function validateNewsletterEmail(
 
   return { valid: true, email }
 }
+
+const PHONE_PATTERN = /^0\d{9}$/
+
+export function validatePhone(rawPhone: string, invalidMessage: string) {
+  const phone = rawPhone.trim()
+
+  if (!phone) {
+    return { valid: false as const, error: invalidMessage }
+  }
+
+  if (!PHONE_PATTERN.test(phone)) {
+    return { valid: false as const, error: invalidMessage }
+  }
+
+  return { valid: true as const, phone }
+}
