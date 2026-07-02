@@ -2,6 +2,8 @@
 
 Landing page và mini e-commerce cho thương hiệu công nghệ **TechNexus**, xây dựng với React 19, Vite 8 và Tailwind CSS v4. Tích hợp đăng nhập, đăng ký, hồ sơ người dùng và chatbot AI.
 
+**Production:** [helicorp-test.onrender.com](https://helicorp-test.onrender.com)
+
 ## Tính năng
 
 - **Scrollytelling** — Hero, tính năng, thông số, newsletter (parallax + reveal on scroll)
@@ -128,6 +130,8 @@ src/
 
 ### Render (frontend)
 
+**Live:** [helicorp-test.onrender.com](https://helicorp-test.onrender.com)
+
 File `render.yaml` đã cấu hình sẵn:
 
 | Cài đặt | Giá trị |
@@ -164,5 +168,6 @@ Commit theo [Conventional Commits](https://www.conventionalcommits.org/): `feat(
 
 ## Liên kết
 
+- **Production:** [helicorp-test.onrender.com](https://helicorp-test.onrender.com)
 - **Repo:** [github.com/GiangVoTruong/helicorp_test](https://github.com/GiangVoTruong/helicorp_test)
 - **API Swagger:** [java-x07o.onrender.com/swagger-ui](https://java-x07o.onrender.com/swagger-ui/index.html)
