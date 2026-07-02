@@ -244,6 +244,8 @@ export const translations = {
       profileSubtitle: 'Quản lý thông tin tài khoản TechNexus',
       profileLoading: 'Đang tải hồ sơ...',
       profileError: 'Không thể tải hồ sơ. Vui lòng thử lại sau.',
+      loginSuccess: 'Đăng nhập thành công',
+      loginError: 'Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin.',
       logout: 'Đăng xuất',
     },
     footer: {
@@ -497,6 +499,8 @@ export const translations = {
       profileSubtitle: 'Manage your TechNexus account',
       profileLoading: 'Loading profile...',
       profileError: 'Unable to load profile. Please try again later.',
+      loginSuccess: 'Signed in successfully',
+      loginError: 'Sign in failed. Please check your credentials.',
       logout: 'Log out',
     },
     footer: {
